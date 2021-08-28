@@ -3,6 +3,22 @@ const router = express.Router();
 const passport = require('passport');
 const {checkAuth} =require('../middleware/checkAuth');
 
+let location;
+
+
+const fetch = require('node-fetch');
+
+
+let url = `http://api.ipapi.com/api/check?access_key=ff1d5d234467a690947054984e3fc2f0`;
+
+let settings = { method: "Get" };
+      
+fetch(url, settings)
+    .then(res => res.json())
+    .then((json) => {
+        location = json.country_name;
+        console.log(json);
+});
 
 
 const User = require('../Models/userModel');
@@ -10,6 +26,8 @@ const Server = require('../Models/serverModel');
 const Router = require('../Models/router');
 const Schema = require('../Models/schemaModel');
 const Sub = require('../Models/subRout');
+
+
 
 
 
@@ -47,9 +65,8 @@ function makeid(length) {
 router.get('/api/:server/:router/api/:sub',async(req,res)=>{
     const server = await Server.findOne({name:req.params.server})
     const router = await Router.findOne({name:req.params.router});
-    const sub = await Router.findOne({name:req.params.sub});
-    const json = JSON.stringify(sub.send);
-    res.send(json);
+    const sub = await Sub.findOne({name:req.params.sub});
+    res.send(sub.send);
 })
 
 
@@ -57,10 +74,13 @@ router.get('/api/:server/:router',async(req,res)=>{
 
     const server = await Server.findOne({name:req.params.server})
     const router = await Router.findOne({name:req.params.router});
-    if(router.type=='get'){
+    if(router.type=='post'){
         res.send("This is not a post request");
     }
     else{
+        router.clicks = router.clicks + 1 ;
+        router.location = router.location.concat(location);
+        router.save();
         const json = JSON.stringify(router.send);
         res.send(json);
     }
@@ -77,6 +97,7 @@ router.post('/api/:server/:router',async(req,res)=>{
         res.send("This is not a get request");
     }
     else{
+        router.clicks = router.clicks+1;
         res.send(req.body);
     }
 

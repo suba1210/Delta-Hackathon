@@ -22,6 +22,13 @@ const RouterSchema = new Schema({
     sub : [{
         type: Schema.Types.ObjectId,
         ref : 'Sub'
+    }],
+    clicks : {
+        type : Number,
+        default : 0
+    },
+    location : [{
+        type : String
     }]
 
 },{

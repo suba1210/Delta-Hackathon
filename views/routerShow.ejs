@@ -21,7 +21,7 @@
       cursor: pointer;
     }
 
-    table,td{
+    table,td,th{
     border:1px solid black;
     border-collapse: collapse;
     width:500px;
@@ -99,7 +99,7 @@ td>a{
 
             <td><a href='/subdelete/<%=r._id%>/<%=router._id%>/<%=server._id%>'>Delete</a></td>
 
-            <td><a href='/api/<%=server.name%>/<%=router.name%>/api/<%=r.name%>'> http://localhost:3000//api/<%=server.name%>/<%=router.name%>/<%=r.name%></a></td>
+            <td><a href='/api/<%=server.name%>/<%=router.name%>/api/<%=r.name%>'> http://localhost:3000/api/<%=server.name%>/<%=router.name%>/<%=r.name%></a></td>
         
         </tr>
         
@@ -147,16 +147,48 @@ td>a{
 
 </div>
 
-<br><br>
 
-<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
-
-<a href='/routerdelete/<%=router._id%>/<%=server._id%>'><button class='button'>Delete this router</button></a>
-
-</div>
 
 
 <% } %> 
+
+<br><br>
+
+
+<table>
+    <thead>
+        <th>No. of people accessed this route</th>
+        <th>Location statistics</th>
+    </thead>
+    <tbody>
+        <td><%=router.clicks%></td>
+
+        <td>
+
+            <ul style='list-style-type: none;'>
+            
+            <% for(k of router.location){ %>
+                
+                <li><%=k%> </li>
+
+            <% } %> 
+
+            </ul>
+
+        </td>
+
+    </tbody>
+
+
+
+
+
+
+
+
+</table>
+
+
 
 
 <br><br>
@@ -166,6 +198,14 @@ td>a{
     <a href='/home'><button class='button'>Back</button></a>
     
     
+</div>
+
+<br><br>
+
+<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
+
+<a href='/routerdelete/<%=router._id%>/<%=server._id%>'><button class='button'>Delete this router</button></a>
+
 </div>
 
 
