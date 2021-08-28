@@ -12,8 +12,12 @@ const ServerSchema = new Schema({
     routers : [{
         type: Schema.Types.ObjectId,
         ref : 'Router'
-    }]
+    }],
 
+    data : [{
+        type: Schema.Types.ObjectId,
+        ref : 'Schema'
+    }]
 
 },{
     timestamps: true

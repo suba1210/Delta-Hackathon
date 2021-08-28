@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+
+<h4><%=model.name%></h4>
+
+<p>Try requesting to : </p>
+
+<a href='/<%=server.name%>/api/<%=model.name%>/all'>http://localhost:3000/<%=server.name%>/api/<%=model.name%>/all</a>
+
+<br><br>
+
+<a href='/<%=server.name%>/apid/<%=model.name%>/:id'>http://localhost:3000/<%=server.name%>/api/<%=model.name%>/(modelId)</a>
+
+<p>Server name : <%=server.name%></p>
+
+<table>
+    <thead>
+        <td>Name</td>
+        <td>Type</td>
+    </thead>
+    <tbody>
+        <tr>
+        <td><%=model.name1%></td>
+        <td><%=model.type1%></td>
+        </tr>
+        <tr>
+            <td><%=model.name2%></td>
+            <td><%=model.type2%></td>
+        </tr>
+        <tr>
+            <td><%=model.name3%></td>
+            <td><%=model.type3%></td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+
+
+
+
+<a href='/model/delete/<%=model._id%>/<%=server._id%>'>Delete this model</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

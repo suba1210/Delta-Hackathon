@@ -15,8 +15,16 @@
 
 <a href='/createrouter/<%=server._id%>'><button>Create Router to your server</button></a>
 
+<a href='/createschema/<%=server._id%>'><button>Create Schema</button></a>
+
 
 <br><br>
+
+
+
+
+
+<p>All your Routes : </p>
 
 <% if(server.routers.length!=0){ %>
    
@@ -27,6 +35,28 @@
         
         
     <li><a href='/router/show/<%=server._id%>/<%=r._id%>'><%=r.name%></a></li>
+    
+    
+    
+    <% } %> 
+    
+    
+    </ul> 
+
+<% } %> 
+
+
+<p>All your Schemas</p>
+
+<% if(server.data.length!=0){ %>
+   
+    
+    <ul>   
+        
+    <% for(r of server.data){ %>
+        
+        
+    <li><a href='/model/show/<%=server._id%>/<%=r._id%>'><%=r.name%></a></li>
     
     
     

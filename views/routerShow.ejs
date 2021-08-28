@@ -18,7 +18,7 @@
 <p>Router Link : <a href='/api/<%=server.name%>/<%=router.name%>'>http://localhost:3000/<%=server.name%>/<%=router.name%></a>  </p>
 
 
-<h4>JSON to send when this route is called : </h4>
+<h4>Response to send when this route is called : </h4>
 
 <form action='/routerresponse/send/<%=router._id%>/<%=server._id%>' method='POST'>
 
@@ -33,7 +33,7 @@
 </form>
 
 
-<p>This route's current json response : </p>
+<p>This route's current response : </p>
 
 <div style='border:1px solid black;padding:20px'>
 
@@ -41,6 +41,10 @@
 
 
 </div>
+
+<br><br>
+
+<a href='/routerdelete/<%=router._id%>/<%=server._id%>'>Delete this router</a>
 
 
 
