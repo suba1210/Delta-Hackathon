@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<h4><%=router.name%></h4>
+
+<p><%=router.type%></p>
+
+<p>Server name : <%=server.name%></p>
+
+<p>Router Link : <a href='/api/<%=server.name%>/<%=router.name%>'>http://localhost:3000/<%=server.name%>/<%=router.name%></a>  </p>
+
+
+<h4>JSON to send when this route is called : </h4>
+
+<form action='/routerresponse/send/<%=router._id%>/<%=server._id%>' method='POST'>
+
+<textarea name='send' placeholder='Enter JSON to send' required><%=router.send%></textarea>
+
+<br><br>
+
+<button>Save</button>
+
+
+
+</form>
+
+
+<p>This route's current json response : </p>
+
+<div style='border:1px solid black;padding:20px'>
+
+<p><%=router.send%></p>
+
+
+</div>
+
+
+
+</body>
+</html>

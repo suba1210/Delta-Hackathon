@@ -103,6 +103,31 @@ router.post('/createrouter/:id',async(req,res)=>{
 })
 
 
+// router show
+
+router.get('/router/show/:serverid/:routerid',async(req,res)=>{
+
+    const currentUser = await User.findById(req.user._id);
+    const server = await Server.findById(req.params.serverid);
+    const router = await Router.findById(req.params.routerid);
+    res.render('routerShow',{router,server});
+})
+
+
+//json from router
+
+router.post('/routerresponse/send/:id/:sid',async(req,res)=>{
+
+    const currentUser = await User.findById(req.user._id);
+    const router = await Router.findById(req.params.id);
+    const server = await Server.findById(req.params.sid);
+    router.send = req.body.send;
+    router.save();
+    res.redirect(`/router/show/${server._id}/${router._id}`);
+
+
+})
+
 
 
 

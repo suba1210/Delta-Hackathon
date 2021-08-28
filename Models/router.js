@@ -14,6 +14,10 @@ const RouterSchema = new Schema({
     server : {
         type: Schema.Types.ObjectId,
         ref : 'Server'
+    },
+    send : {
+        type : String,
+        default : "NOTHING TO SHOW"
     }
 
 },{

@@ -13,6 +13,7 @@ const flash = require('connect-flash');
 //requiring routes
 const authRout = require('./Routes/authRout');
 const homeRout = require('./Routes/homeRout');
+const external = require('./Routes/externalRouters');
 
 
 //requiring model
@@ -83,7 +84,7 @@ app.get('/', async(req,res)=>{
 //using routes
 app.use(authRout);
 app.use(homeRout);
-
+app.use(external);
 
 
 app.listen(3000, () => {
