@@ -8,39 +8,39 @@
 </head>
 <body>
     
+<%- include('./partials/flash') %>
 
 
 <form action='/createserver/new'  method='POST' >
 
 
-    <label>Server </label>
+    <label for='name'>Server name</label> <br>
 
+    <input type='text' id='name' name='name' required>
 
+    <br><br>
 
-
-
-
-
-
-
-
-
+    <button type='submit'>Create server</button>
 
 
 </form>
 
 
+<br><br>
 
+<% if(currentUser.server.length!=0){ %>
+    
+    <ul>
 
+    <% for(s of currentUser.server){ %>
+        
+        <li><a href='/servershow/<%=s._id%>'><%=s.name%></a></li>
+        
+    <% } %> 
 
+    </ul>
 
-
-
-
-
-
-
-
+<% } %> 
 
 
 

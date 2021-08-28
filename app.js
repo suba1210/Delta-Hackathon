@@ -20,7 +20,7 @@ const User = require('./Models/userModel');
 
 
 // connecting to database
-mongoose.connect('mongodb://localhost:27017/deltafinal', {
+mongoose.connect('mongodb://localhost:27017/delta2', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
