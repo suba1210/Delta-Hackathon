@@ -20,6 +20,22 @@
       margin: 4px 2px;
       cursor: pointer;
     }
+
+    table,td{
+    border:1px solid black;
+    border-collapse: collapse;
+    width:500px;
+    margin:0 auto;
+}
+td{
+    text-align: center;
+    padding : 10px;
+}
+td>a{
+    text-decoration: none;
+    font-weight:bolder;
+    font-size: larger;
+}
     
     
     
@@ -39,6 +55,68 @@
 <p>Router Link : <a href='/api/<%=server.name%>/<%=router.name%>'>http://localhost:3000/<%=server.name%>/<%=router.name%></a>  </p>
 
 </div>
+
+<hr style='width: 700px;'>
+
+
+<% if(router.type=='get'){ %> 
+
+
+<h3 style='text-align: center;'>Sub Route for this Route</h3>
+
+<form action='/subcreate/<%=router._id%>/<%=server._id%>' method='POST' style='display:flex;justify-content: center;align-items: center; flex-direction: column;'>
+
+    <label>Name : </label>
+
+    <input type='text' name='name' required>
+
+    <br><br>
+
+    <label>Data to be sent : </label><br>
+
+    <textarea name='send' required></textarea>
+
+
+    <br><br>
+
+    <button class='button' type='submit'>Create</button>
+
+</form>
+
+<br><br>
+
+<% if(router.sub.length!=0){ %>
+    
+    <table>
+        <tbody>
+            
+        <% for(r of router.sub){ %>
+            
+            
+        <tr>
+            
+            <td> <%=r.name%></a></td>
+
+            <td><a href='/subdelete/<%=r._id%>/<%=router._id%>/<%=server._id%>'>Delete</a></td>
+
+            <td><a href='/api/<%=server.name%>/<%=router.name%>/api/<%=r.name%>'> http://localhost:3000//api/<%=server.name%>/<%=router.name%>/<%=r.name%></a></td>
+        
+        </tr>
+        
+           
+        <% } %> 
+        
+        </tbody>
+       
+    </table>
+
+
+
+<% } %> 
+
+<br><br>
+
+<hr style='width: 700px;'>
 
 <div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
 
@@ -76,6 +154,20 @@
 <a href='/routerdelete/<%=router._id%>/<%=server._id%>'><button class='button'>Delete this router</button></a>
 
 </div>
+
+
+<% } %> 
+
+
+<br><br>
+
+<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
+
+    <a href='/home'><button class='button'>Back</button></a>
+    
+    
+</div>
+
 
 </body>
 </html>

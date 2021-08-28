@@ -82,7 +82,7 @@ td>a{
         
         <% for(r of server.routers){ %>
                 
-            <td><a href='/router/show/<%=server._id%>/<%=r._id%>'> /<%=r.name%> </a></td>
+            <tr><td><a href='/router/show/<%=server._id%>/<%=r._id%>'> /<%=r.name%> </a></td></tr>
             
         
         <% } %> 
@@ -113,7 +113,7 @@ td>a{
     <% for(r of server.data){ %>
         
         
-    <td><a href='/model/show/<%=server._id%>/<%=r._id%>'>  <%=r.name%> </a></td>
+    <tr><td><a href='/model/show/<%=server._id%>/<%=r._id%>'>  <%=r.name%> </a></td></tr>
     
     
     

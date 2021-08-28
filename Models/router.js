@@ -18,7 +18,11 @@ const RouterSchema = new Schema({
     send : {
         type : String,
         default : "NOTHING TO SHOW"
-    }
+    },
+    sub : [{
+        type: Schema.Types.ObjectId,
+        ref : 'Sub'
+    }]
 
 },{
     timestamps: true

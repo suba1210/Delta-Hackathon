@@ -9,6 +9,8 @@ const User = require('../Models/userModel');
 const Server = require('../Models/serverModel');
 const Router = require('../Models/router');
 const Schema = require('../Models/schemaModel');
+const Sub = require('../Models/subRout');
+
 
 
 function makeNum(length) {
@@ -42,17 +44,45 @@ function makeid(length) {
    return result;
 }
 
-
+router.get('/api/:server/:router/api/:sub',async(req,res)=>{
+    const server = await Server.findOne({name:req.params.server})
+    const router = await Router.findOne({name:req.params.router});
+    const sub = await Router.findOne({name:req.params.sub});
+    const json = JSON.stringify(sub.send);
+    res.send(json);
+})
 
 
 router.get('/api/:server/:router',async(req,res)=>{
 
     const server = await Server.findOne({name:req.params.server})
     const router = await Router.findOne({name:req.params.router});
-    const json = JSON.stringify(router.send);
-    res.send(json);
+    if(router.type=='get'){
+        res.send("This is not a post request");
+    }
+    else{
+        const json = JSON.stringify(router.send);
+        res.send(json);
+    }
 
 })
+
+
+
+router.post('/api/:server/:router',async(req,res)=>{
+
+    const server = await Server.findOne({name:req.params.server})
+    const router = await Router.findOne({name:req.params.router});
+    if(router.type=='get'){
+        res.send("This is not a get request");
+    }
+    else{
+        res.send(req.body);
+    }
+
+})
+
+
 
 router.get('/:server/api/:model/all',async(req,res)=>{
     

@@ -9,6 +9,7 @@ const User = require('../Models/userModel');
 const Server = require('../Models/serverModel');
 const Router = require('../Models/router');
 const Schema = require('../Models/schemaModel');
+const Sub = require('../Models/subRout');
 
 
 
@@ -110,7 +111,7 @@ router.get('/router/show/:serverid/:routerid',async(req,res)=>{
 
     const currentUser = await User.findById(req.user._id);
     const server = await Server.findById(req.params.serverid);
-    const router = await Router.findById(req.params.routerid);
+    const router = await Router.findById(req.params.routerid).populate('sub');
     res.render('routerShow',{router,server});
 
 })
@@ -206,6 +207,30 @@ router.get('/model/delete/:mid/:sid',async(req,res)=>{
     server.data.splice(s,-1);
     server.save();
     res.redirect(`/servershow/${server._id}`);
+})
+
+router.post('/subcreate/:rid/:sid',async(req,res)=>{
+
+    const router = await Router.findById(req.params.rid);
+    const server = await Server.findById(req.params.sid);
+    const sub = new Sub(req.body);
+    await sub.save();
+    router.sub = router.sub.concat(sub._id);
+    router.save();
+    res.redirect(`/router/show/${server._id}/${router._id}`);
+
+})
+
+router.get('/subdelete/:subid/:rid/:sid',async(req,res)=>{
+    
+    const router = await Router.findById(req.params.rid);
+    const server = await Server.findById(req.params.sid);
+    const sub = await Sub.findByIdAndDelete(req.params.subid);
+    let s = router.sub.indexOf(req.params.subid);
+    router.sub.splice(s,-1);
+    router.save();
+    res.redirect(`/router/show/${server._id}/${router._id}`);
+
 })
 
 
