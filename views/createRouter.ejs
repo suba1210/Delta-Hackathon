@@ -6,15 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+
+<style>
+
+.button{
+    background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+
+
+</style>
 <body>
+
+
 
 <%- include('./partials/flash') %>
     
-<form action='/createrouter/<%=server._id%>' method='POST'>
+<h1 style='text-align: center;'> Create Servers  </h1>
 
-<label for='routername' >Router</label>
 
-<input type='text' id='routername' name='name' required>
+<div>
+
+
+<form style='display: flex;flex-direction: column;justify-content: center;align-items: center;' action='/createrouter/<%=server._id%>' method='POST'>
+
+<label for='routername' >Router</label> <br>
+
+<input type='text' id='routername' name='name' required> <br><br>
 
 <select id='type' name='type' required>
 
@@ -25,16 +54,18 @@
 
 <br><br>
 
-<button>Submit</button>
+<button class="button">Submit</button>
 
 </form>
 
+</div>
+
+<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
+
+<a href='/servershow/<%=server._id%>'><button class='button'>Back</button></a>
 
 
-<a href='/servershow/<%=server._id%>'>Back</a>
-
-
-
+</div>
 
 
 

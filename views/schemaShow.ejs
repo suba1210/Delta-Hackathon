@@ -7,10 +7,47 @@
     <title>Document</title>
 </head>
 
+<style>
+
+.button{
+    background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+table,td{
+    border:1px solid black;
+    border-collapse: collapse;
+    width:500px;
+    margin:0 auto;
+}
+td{
+    text-align: center;
+    padding : 10px;
+}
+td>a{
+    text-decoration: none;
+    font-weight:bolder;
+    font-size: larger;
+}
+
+
+
+
+</style>
+
 <body>
     
 
-<h4><%=model.name%></h4>
+<h2 style='text-align: center;'><%=model.name%></h2>
+
+<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
 
 <p>Try requesting to : </p>
 
@@ -20,7 +57,11 @@
 
 <a href='/<%=server.name%>/apid/<%=model.name%>/:id'>http://localhost:3000/<%=server.name%>/api/<%=model.name%>/(modelId)</a>
 
-<p>Server name : <%=server.name%></p>
+</div>
+
+<br><br>
+
+<p style='text-align: center;'>Server name : <%=server.name%></p>
 
 <table>
     <thead>
@@ -44,15 +85,15 @@
     </tbody>
 </table>
 
+<br><br>
 
 
+<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
+
+<a href='/model/delete/<%=model._id%>/<%=server._id%>'><button class='button'>Delete this model</button></a>
 
 
-
-<a href='/model/delete/<%=model._id%>/<%=server._id%>'>Delete this model</a>
-
-
-
+</div>
 
 
 

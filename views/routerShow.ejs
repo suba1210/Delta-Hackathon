@@ -6,47 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+
+    .button{
+        background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 8px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    
+    
+    
+    
+</style>
 <body>
     
 
-<h4><%=router.name%></h4>
+<h1 style='text-align: center;'><%=router.name%></h1>
 
-<p><%=router.type%></p>
+<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
+
+<p> Type :  <%=router.type%></p>
 
 <p>Server name : <%=server.name%></p>
 
 <p>Router Link : <a href='/api/<%=server.name%>/<%=router.name%>'>http://localhost:3000/<%=server.name%>/<%=router.name%></a>  </p>
 
+</div>
+
+<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
 
 <h4>Response to send when this route is called : </h4>
 
-<form action='/routerresponse/send/<%=router._id%>/<%=server._id%>' method='POST'>
+<form style='display: flex;flex-direction: column;justify-content: center;align-items: center;' action='/routerresponse/send/<%=router._id%>/<%=server._id%>' method='POST'>
 
 <textarea name='send' placeholder='Enter JSON to send' required><%=router.send%></textarea>
 
 <br><br>
 
-<button>Save</button>
+<button class='button'>Save</button>
 
-
+</div>
 
 </form>
 
+<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
 
 <p>This route's current response : </p>
 
-<div style='border:1px solid black;padding:20px'>
+<div style='border:1px solid black;padding:20px;width:300px'>
 
 <p><%=router.send%></p>
 
 
 </div>
 
+</div>
+
 <br><br>
 
-<a href='/routerdelete/<%=router._id%>/<%=server._id%>'>Delete this router</a>
+<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
 
+<a href='/routerdelete/<%=router._id%>/<%=server._id%>'><button class='button'>Delete this router</button></a>
 
+</div>
 
 </body>
 </html>

@@ -6,64 +6,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+
+.div>a{
+    margin : 10px;
+}
+.button{
+    background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+table,td{
+    border:1px solid black;
+    border-collapse: collapse;
+    width:500px;
+    margin:0 auto;
+}
+td{
+    text-align: center;
+    padding : 10px;
+}
+td>a{
+    text-decoration: none;
+    font-weight:bolder;
+    font-size: larger;
+}
+
+</style>
+
+
+
 <body>
  
 <%- include('./partials/flash') %>
 
-<h4><%=server.name%></h4>
+<h1 style='text-align:center'><%=server.name%></h1>
 
+<div class='div' style='display:flex;justify-content: center;align-items: center;'>
 
-<a href='/createrouter/<%=server._id%>'><button>Create Router to your server</button></a>
+<a href='/createrouter/<%=server._id%>'><button class="button">Create Router to your server</button></a>
 
-<a href='/createschema/<%=server._id%>'><button>Create Schema</button></a>
+<a href='/createschema/<%=server._id%>'><button class="button">Create Schema</button></a>
 
+</div>
 
 <br><br>
 
+<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
+
+    <a href='/home'><button class='button'>Back</button></a>
+    
+    
+</div>
 
 
 
 
-<p>All your Routes : </p>
+
+
 
 <% if(server.routers.length!=0){ %>
    
-    
-    <ul>   
-        
-    <% for(r of server.routers){ %>
-        
-        
-    <li><a href='/router/show/<%=server._id%>/<%=r._id%>'><%=r.name%></a></li>
-    
-    
-    
-    <% } %> 
-    
-    
-    </ul> 
+    <h3 style='text-align:center' >All Routes of this server </h3>
 
-<% } %> 
+    <table>
+    <tbody>
+
+        
+        <% for(r of server.routers){ %>
+                
+            <td><a href='/router/show/<%=server._id%>/<%=r._id%>'> /<%=r.name%> </a></td>
+            
+        
+        <% } %> 
+
+    </tbody>
 
 
-<p>All your Schemas</p>
+
+    </table>
+ 
+<% } %>     
+
+
+    
+    
+
+
+
 
 <% if(server.data.length!=0){ %>
    
     
-    <ul>   
+    <h3 style='text-align:center' >All Schemas of this server </h3>
+
+    <table>
+    <tbody>
         
     <% for(r of server.data){ %>
         
         
-    <li><a href='/model/show/<%=server._id%>/<%=r._id%>'><%=r.name%></a></li>
+    <td><a href='/model/show/<%=server._id%>/<%=r._id%>'>  <%=r.name%> </a></td>
     
     
     
     <% } %> 
     
-    
-    </ul> 
+    </tbody>
+
+
+
+    </table>
+
 
 <% } %> 
 

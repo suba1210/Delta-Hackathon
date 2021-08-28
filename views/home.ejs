@@ -5,42 +5,107 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    
+
 </head>
+
+<style>
+
+.button{
+    background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+table,td{
+    border:1px solid black;
+    border-collapse: collapse;
+    width:500px;
+    margin:0 auto;
+}
+td{
+    text-align: center;
+    padding : 10px;
+}
+td>a{
+    text-decoration: none;
+    font-weight:bolder;
+    font-size: larger;
+}
+
+
+</style>
+
+
+
 <body>
     
 <%- include('./partials/flash') %>
 
+<h1 style='text-align: center;'>Mock Server</h1>
 
+<br><br>
+
+
+<div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
 <form action='/createserver/new'  method='POST' >
 
 
-    <label for='name'>Server name</label> <br>
+    <label for='name'>Server name</label> :
 
     <input type='text' id='name' name='name' required>
 
-    <br><br>
+    <br><br><br><br>
 
-    <button type='submit'>Create server</button>
+    <div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
+
+        <button class="button"  type='submit'>Create server</button>
+
+    </div>
+
+
 
 
 </form>
+</div>
 
 
 <br><br>
 
-<% if(currentUser.server.length!=0){ %>
-    
-    <ul>
+<h2 style='text-align: center;'>Your Servers</h2>
 
-    <% for(s of currentUser.server){ %>
+<table>
+    <tbody>
+
+
+        <% if(currentUser.server.length!=0){ %>
         
-        <li><a href='/servershow/<%=s._id%>'><%=s.name%></a></li>
+            <% for(s of currentUser.server){ %>
+
+                <tr>
+                
+                <td><a href='/servershow/<%=s._id%>'><%=s.name%></a></td>
+
+                </tr>
+                
+            <% } %> 
+
         
-    <% } %> 
+        <% } %> 
 
-    </ul>
+    </tbody>
 
-<% } %> 
+
+
+</table>
+
 
 
 

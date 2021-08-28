@@ -6,18 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+
+    .button{
+        background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 8px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    
+    
+    
+    
+</style>
 <body>
 
     <%- include('./partials/flash') %>
+
+
+    <h1 style='text-align: center;'>Create your Schema</h1>
+   
     
 
-    <form action='/createmodel/<%=server._id%>' method='POST'>
+    <form style='display: flex;flex-direction: column;justify-content: center;align-items: center;' action='/createmodel/<%=server._id%>' method='POST'>
 
         <label>Model name : </label>
 
         <input type='text' name='name' placeholder='Model name' required>
 
         <p>Schemas : </p>
+
+        <div>
 
         <label>1.Name : </label>
         <input type='text' name='name1' placeholder='name' required>
@@ -30,7 +55,11 @@
         
         </select>
 
+        </div>
+
         <br><br>
+
+        <div>
 
         <label>2.Name : </label>
         <input type='text' name='name2' placeholder='name' required>
@@ -43,7 +72,11 @@
         
         </select>
 
+        </div>
+
         <br><br>
+
+        <div>
 
         <label>3.Name : </label>
         <input type='text' name='name3' placeholder='name' required>
@@ -57,7 +90,11 @@
         
         </select>
 
-        <button type='submit'>Submit</button>
+        </div>
+
+        <br><br>
+
+        <button class='button' type='submit'>Save</button>
 
 
 
@@ -66,7 +103,12 @@
     <br><br>
 
 
-    <a href='/servershow/<%=server._id%>'>Back</a>
+    <div style='display: flex;flex-direction: column;justify-content: center;align-items: center;'>
+
+        <a href='/servershow/<%=server._id%>'><button class='button'>Back</button></a>
+        
+        
+    </div>
 
 
 
